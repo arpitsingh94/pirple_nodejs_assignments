@@ -23,7 +23,9 @@ var https_server_options = {
 	cert : fs.readFileSync('./ssl/cert.pem')
 }
 
-var https_server = https.createServer(https_server_options, unified_server_callback);
+var https_server = https.createServer(https_server_options,function (req,res) {
+	unified_server_callback(req,res);
+});
 https_server.listen(config.https_port, ()=>{
 	console.log("HTTPS server is listening on port", config.https_port);
 });

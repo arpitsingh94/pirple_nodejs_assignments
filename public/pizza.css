@@ -1,0 +1,493 @@
+/*
+ * CSS Styles for Application
+ *
+ */
+
+/* Resets */
+body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited,table,tr,td,th,form,input,select,textarea{
+  line-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #1a1a1a;
+  border-width: 0;
+}
+
+.clear{
+  float: none;
+  width: 100%;
+  height: 1px;
+}
+
+/* Main color palette */
+.header{
+  background-color: #fff;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #fff;
+  box-shadow: 0 -25px 11px 20px #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  min-width: 1200px;
+}
+
+.header ul{
+  list-style-type: none;
+  text-align: right;
+  padding: 0 75px;
+  float: right;
+}
+
+.header ul li{
+  display: inline-block;
+  padding: 10px 10px 0 10px;
+}
+
+.header ul li a{
+  text-transform: uppercase;
+  font-weight: 900 !important;
+  font-size: 11px;
+}
+
+.header ul li.loggedIn{
+  display: none;
+}
+
+body.loggedIn .header ul li.loggedIn{
+  display: inline-block;
+}
+
+body.loggedIn .header ul li.loggedOut{
+  display: none;
+}
+body.loggedIn div.loggedOut{
+  display: none;
+}
+
+.header .logo{
+  text-align: left;
+  padding: 0 0 0 90px;
+  float: left;
+}
+
+.header .logo img{
+    width: 50px;
+}
+
+.content {
+  margin-top: 150px;
+  width: 1000px;
+  margin: 150px auto;
+}
+
+.footer{
+  width: 100%;
+  background-color: #1a1a1a;
+  padding: 50px 0;
+  text-align: center;
+  border-width: 1px 0 0 0;
+  border-color: #fff;
+  border-style: solid;
+}
+
+.footer .copyright{
+  color: #fff;
+  font-size: 10px;
+}
+
+/* Index */
+h1{
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0 0 5px 0;
+}
+
+h2{
+  text-align: center;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+body.index .blurb{
+  text-align: center;
+  background-color: #ececec;
+  border-color: #b3b3b3;
+  border-style: dotted;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto 20px auto;
+  max-width: 500px;
+  line-height: 150%;
+  font-size: 14px;
+}
+
+.ctaWrapper{
+  text-align: center;
+}
+
+.cta,a.cta:hover,a.cta:active,a.cta:visited,button.cta:hover,button.cta:active,button.cta:visited{
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 15px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.cta.blue{
+  background-color: #214478 !important;
+}
+
+.cta.green{
+  background-color: #217844 !important;
+}
+
+.cta.red{
+  background-color: #c83737 !important;
+}
+
+.warning{
+  font-style: italic;
+  color: #c83737;
+  font-size: 17px;
+  text-align: center;
+  line-height: 150%;
+  padding: 0 0 20px 0 ;
+}
+
+/* Form Styling for Account Creation page and others */
+.formWrapper{
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 15px;
+}
+
+.formError{
+  display: none;
+  background-color: #c83737;
+  font-style: italic;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  border-color: #d87070;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.formSuccess{
+  display: none;
+  background-color: #217844;
+  font-style: italic;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  border-color: #35c06d;
+  border-width: 2px;
+  border-style: solid;
+}
+
+hr {
+  margin: 30px 0;
+}
+
+input,select,option {
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 7px 1%;
+  width: 100%;
+}
+
+.checkboxGroup input{
+  display: inline-block;
+  width: initial;
+  margin: 20px;
+}
+
+input.disabled{
+  background-color: #efefef;
+}
+
+.inputWrapper{
+  padding: 0 0 20px 0;
+}
+
+.inputLabel{
+  padding: 0 0 5px 0;
+  color: #808080;
+}
+
+.backButton{
+  text-transform: uppercase;
+  font-weight: bold !important;
+  display: inline-block !important;
+  width: 100px;
+  padding: 7px !important;
+  color: #fff !important;
+  background-color: #1a1a1a;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table{
+  width: 100%;
+}
+
+tr{
+  width: 100%;
+}
+
+th{
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+  border-color: #000;
+  border-style: dotted;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  background-color: #efefef;
+}
+
+td{
+  padding: 5px;
+  text-align: center;
+}
+
+td a, td a:hover, td a:active{
+  color: #2e5fa8;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Page specific styles for dashboard */
+
+#noChecksMessage td{
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  padding: 20px;
+}
+
+#noChecksMessage{
+  display: none;
+}
+
+#createCheckCTA{
+  margin-top: 40px;
+  display: none;
+}
+
+.cart-total {
+  margin-top: 3vh;
+  font-weight: bold;
+  background: #efefef;
+  font-size: 4vh;
+  text-align: right;
+}
+
+button.create-order {
+  margin-top: 1vh;
+  font-size: 3vh;
+  color: #000;
+  background-color: #e9e9e9;
+  border-color: #adadad;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid;
+  float: right;
+}
+button.create-order:hover {
+  color: #333;
+  background-color: #e6e6e6;
+}
+button.create-order:disabled,
+button.create-order[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.cart-add {
+  background-color: #e9e9e9;
+  border-color: #adadad;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid;
+  padding: 3px;
+}
+
+#cartbody input {
+  border: 0.3em solid #000000;
+  padding: 0.5em 0.3em; 
+  font-size: 1.2em;
+  text-align: center;
+  width: 3vw;
+}
+
+#cartbody button.qty {
+  width: 1em;
+  line-height: 1em;
+  border-radius: 2em;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  background: #43ace3;  
+  color: #fff;
+}
+
+#cartbody button.qty:hover {
+  background: #3b9ac6;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+.accordion::after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion-panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+#toast {
+  visibility: hidden;
+  max-width: 350px;
+  /*margin-left: -125px;*/
+  margin: auto;
+  text-align: center;
+  border-radius: 2px;
+
+  position: fixed;
+  z-index: 1;
+  left: 0;right:0;
+  bottom: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+#toast .message{
+  background-color: #333;
+  color: #fff;
+  padding: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+  from {min-width: 50px} 
+  to {min-width: 350px}
+}
+
+@keyframes expand {
+  from {min-width: 50px}
+  to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+  from {min-width: 350px} 
+  to {min-width: 350px}
+}
+
+@keyframes stay {
+  from {min-width: 350px}
+  to {min-width: 350px}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 60px; opacity: 0;}
+}

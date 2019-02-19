@@ -404,7 +404,7 @@ app.loadCartIcon = function(){
       responsePayload.items.map(item=>{
         count += item.quantity;
       });
-      if(count == 0) document.getElementById("cart-superscript").innerHTML = "";
+      if(count == 0) document.getElementById("cart-superscript").innerHTML = "0";
       else document.getElementById("cart-superscript").innerHTML = count;
     }
     else{
@@ -693,18 +693,23 @@ app.loadOrdersPage = function(){
                   <p>
                     Order Id: ${orderResponse.order_id}
                   </p>
+                  <br>
                   <p>
                     Order Created: ${(new Date(orderResponse.order_created*1000)).toDateString()}, ${(new Date(orderResponse.order_created*1000)).toTimeString()}
                   </p>
+                  <br>
                   <p>
                     Delivery Address: ${orderResponse.delivery_address}
                   </p>
+                  <br>
                   <p>
                     Payment ID: ${orderResponse.payment_id}
                   </p>
+                  <br>
                   <p>
-                    Total Price: ${orderResponse.total_price}
+                    Total Price: INR ${orderResponse.total_price}
                   </p>
+                  <br>
                   <p>
                   Order Details: 
                   <table>
@@ -733,6 +738,7 @@ app.loadOrdersPage = function(){
                 `;
                 if(orderResponse.deleted){
                   html_string+= `
+                  <br>
                   <p>
                     This order was cancelled.
                   </p>

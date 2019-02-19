@@ -177,34 +177,6 @@ body.index .blurb{
   padding: 15px;
 }
 
-.formError{
-  display: none;
-  background-color: #c83737;
-  font-style: italic;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin: 0 0 15px 0;
-  text-align: center;
-  border-color: #d87070;
-  border-width: 2px;
-  border-style: solid;
-}
-
-.formSuccess{
-  display: none;
-  background-color: #217844;
-  font-style: italic;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin: 0 0 15px 0;
-  text-align: center;
-  border-color: #35c06d;
-  border-width: 2px;
-  border-style: solid;
-}
-
 hr {
   margin: 30px 0;
 }
@@ -445,6 +417,7 @@ button.create-order[disabled]{
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
+  font-style: italic;
 }
 
 #toast.show {
@@ -490,4 +463,15 @@ button.create-order[disabled]{
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 60px; opacity: 0;}
+}
+
+.cart-superscript{
+  position: relative;
+  top: 10px;
+  border: 2px solid orange;
+  border-radius: 14px;
+  width: 9px;
+  background: orange;
+  left: 13px;
+  color: black;
 }

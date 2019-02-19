@@ -1,7 +1,7 @@
 module.exports = (data) => {
     return `
         <h1>Pizza Delivery Service</h1>
-        <h2>Get your favourie Pizzas nows</h2>
+        <h2>Get your favourite Pizzas now</h2>
 
         <div class="blurb">Browse through our pizza offerings and order now. Make your payment here itself and we will  notify you immediately.</div>
 

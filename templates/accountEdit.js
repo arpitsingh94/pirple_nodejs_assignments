@@ -9,8 +9,6 @@ module.exports = (data) => {
         <div class="formWrapper">
         <form id="accountEdit1" class="tokenRequest" action="/api/users" method="PUT">
             <input type="hidden" name="_method" value="PUT"/>
-            <div class="formError"></div>
-            <div class="formSuccess">Your Changes Have Been Saved</div>
             <input class="hiddenEmailInput"  type="hidden" name="email_id" />
             <div class="inputWrapper">
                 <div class="inputLabel">Email ID</div>
@@ -39,8 +37,6 @@ module.exports = (data) => {
         <div class="formWrapper">
         <form id="accountEdit2" class="tokenRequest" action="/api/users" method="PUT">
             <input type="hidden" name="_method" value="PUT"/>
-            <div class="formError"></div>
-            <div class="formSuccess">Your New Password Has Been Saved</div>
             <input class="hiddenEmailInput" type="hidden" name="email_id" />
             <div class="inputWrapper">
                 <div class="inputLabel">Choose a New Password</div>

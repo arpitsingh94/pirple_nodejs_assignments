@@ -43,6 +43,7 @@ module.exports = (data) => {
                         <a href="/orders/all">Orders</a>
                     </li>
                     <li class="loggedIn">
+                        <div id="cart-superscript" class="cart-superscript"></div>
                         <a href="/cart/view">
                             <img src="public/shopping-cart-512.png" style="height:25px;" alt="View Cart">
                         </a>

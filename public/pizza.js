@@ -6,14 +6,20 @@
 var utils = {};
 utils.showmessage = function(message){
   let display = "";
+  var x = document.getElementById("toast");
   if(typeof(message) == "string") display = message;
   else if (typeof(message) == "object"){
-    if(message.success) display = message.success;
-    else if (message.error) display = message.error;
+    if(message.success){
+      display = message.success;
+      x.children[0].style.backgroundColor = "#217844";
+    }
+    else if (message.error){
+      display = message.error;
+      x.children[0].style.backgroundColor = "#c83737";
+    }
     else display = JSON.stringify(message);
   }
-  var x = document.getElementById("toast");
-  x.children[0].innerHTML = display;
+  x.children[0].innerHTML = display.charAt(0).toUpperCase() + display.substr(1);
   x.className = "show";
   setTimeout(()=>{
     x.className = x.className.replace("show", "");
@@ -169,14 +175,6 @@ app.bindForms = function(){
         var method = this.method.toUpperCase();
         var headers = this.classList.contains("tokenRequest") ? {"x-token": app.config.sessionToken.token} : {};
 
-        // Hide the error message (if it's currently shown due to a previous error)
-        document.querySelector("#"+formId+" .formError").style.display = 'none';
-
-        // Hide the success message (if it's currently shown due to a previous error)
-        if(document.querySelector("#"+formId+" .formSuccess")){
-          document.querySelector("#"+formId+" .formSuccess").style.display = 'none';
-        }
-
 
         // Turn the inputs into a payload
         var payload = {};
@@ -228,15 +226,7 @@ app.bindForms = function(){
               app.logUserOut();
 
             } else {
-
-              // Try to get the error from the api, or set a default error message
-              var error = typeof(responsePayload.Error) == 'string' ? responsePayload.Error : 'An error has occured, please try again';
-
-              // Set the formError field with the error text
-              document.querySelector("#"+formId+" .formError").innerHTML = error;
-
-              // Show (unhide) the form error field on the form
-              document.querySelector("#"+formId+" .formError").style.display = 'block';
+              utils.showmessage(responsePayload);
             }
           } else {
             // If successful, send to form response processor
@@ -264,11 +254,7 @@ app.formResponseProcessor = function(formId,requestPayload,responsePayload){
       // Display an error on the form if needed
       if(newStatusCode !== 200){
 
-        // Set the formError field with the error text
-        document.querySelector("#"+formId+" .formError").innerHTML = 'Sorry, an error has occured. Please try again.';
-
-        // Show (unhide) the form error field on the form
-        document.querySelector("#"+formId+" .formError").style.display = 'block';
+        utils.showmessage(responsePayload);
 
       } else {
         // If successful, set the token and redirect the user
@@ -283,10 +269,14 @@ app.formResponseProcessor = function(formId,requestPayload,responsePayload){
     window.location = '/';
   }
 
-  // If forms saved successfully and they have success messages, show them
-  var formsWithSuccessMessages = ['accountEdit1', 'accountEdit2'];
-  if(formsWithSuccessMessages.indexOf(formId) > -1){
-    document.querySelector("#"+formId+" .formSuccess").style.display = 'block';
+  // If account edit was successful
+  if(formId == 'accountEdit1'){
+    utils.showmessage({success: "Your Changes Have Been Saved"});
+  }
+
+  // If password change was successful
+  if(formId == 'accountEdit2'){
+    utils.showmessage({success: "Your New Password Has Been Saved"});
   }
 
   // If the user just deleted their account, redirect them to the account-delete page
@@ -402,7 +392,26 @@ app.loadDataOnPage = function(){
   if(primaryClass == "ordersAll"){
     app.loadOrdersPage();
   }
+
+  //load cart icon
+  app.loadCartIcon();
 };
+
+app.loadCartIcon = function(){
+  app.client.request({'x-token' : app.config.sessionToken.token},'api/carts',"GET",undefined,undefined,(statusCode,responsePayload)=>{
+    if(statusCode==200){
+      var count = 0;
+      responsePayload.items.map(item=>{
+        count += item.quantity;
+      });
+      if(count == 0) document.getElementById("cart-superscript").innerHTML = "";
+      else document.getElementById("cart-superscript").innerHTML = count;
+    }
+    else{
+      document.getElementById("cart-superscript").innerHTML = "!";
+    }
+  });
+}
 
 // add item to cart
 app.addToCart = function(e){
@@ -418,12 +427,13 @@ app.addToCart = function(e){
   app.client.request({'x-token' : app.config.sessionToken.token},'api/carts',"POST",undefined,payload,(statusCode,responsePayload)=>{
     // Display an error on the form if needed
     if(statusCode == 200){
-      utils.showmessage("Added to cart");
+      utils.showmessage({success: "Added to cart"});
+      app.loadCartIcon();
     } else if(statusCode == 403){
       app.logUserOut();
     }
     else{
-      utils.showmessage("something went wrong: "+JSON.stringify(responsePayload));
+      utils.showmessage(responsePayload);
     }
   });
 }
@@ -771,6 +781,7 @@ app.updateCartItems = function(cart_id, quantity){
   app.client.request(headersObject, 'api/carts', method, undefined, payload,(statusCode, responsePayload)=>{
     if(statusCode == 200){
       app.loadCartPage();
+      app.loadCartIcon();
     }
     else if(statusCode == 403){
       //log user out
@@ -790,7 +801,7 @@ app.deleteOrder = function(order_id){
   app.client.request(headersObject, 'api/orders', method, undefined, payload,(statusCode, responsePayload)=>{
     if(statusCode == 200){
       app.loadOrdersPage();
-      utils.showmessage("Your order was successfully cancelled");
+      utils.showmessage({success: "Your order was successfully cancelled"});
     }
     else if(statusCode == 403){
       //log user out

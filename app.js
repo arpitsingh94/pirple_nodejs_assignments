@@ -4,6 +4,7 @@
 */
 var data_service = require('./lib/data_service');
 var server = require('./lib/server');
+var cli = require('./lib/cli');
 
 var app = {};
 
@@ -13,6 +14,10 @@ app.init = ()=>{
 	data_service.init();
 	//init the server
 	server.init();
+	//init the cli module with a delay
+	setTimeout(()=>{
+		cli.init();
+	}, 100);
 }
 
 

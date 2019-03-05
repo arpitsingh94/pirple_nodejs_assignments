@@ -22,7 +22,9 @@ app.init = ()=>{
 
 
 //call the app init function
-app.init();
+if(require.main === module){
+    app.init();
+}
 
 
 //exporting the app

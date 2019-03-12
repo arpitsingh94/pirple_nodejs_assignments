@@ -6,7 +6,7 @@ var router_handlers = {
 	},
 	"hello" : {
 		"post" : (req, callback)=>{
-			callback(200, {message: "Hi there. this is an app in progress"});
+			callback(200, {message: "Hi there. Welcome back. This app now supports cluster mode."});
 		}
 	}
 }
